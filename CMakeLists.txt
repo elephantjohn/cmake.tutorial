@@ -1,9 +1,14 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(OLAS)
+project(OLAS VERSION 1.0)
+
+configure_file(OLASConfig.h.in OLASConfig.h)
+
+add_executable(${PROJECT_NAME} main.cpp)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
 add_subdirectory(Adder)
-
 #######################################################
 #   git submodule update init when compile
 #
@@ -26,7 +31,6 @@ endif()
 #######################################################
 add_subdirectory(modules/glfw)
 
-add_executable(${PROJECT_NAME} main.cpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC Adder/)
 #######################################################
